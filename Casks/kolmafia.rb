@@ -1,6 +1,6 @@
 cask "kolmafia" do
-  version "26523"
-  sha256 "c9b99beffb67153647b454bc5acdd41994ae2095bea9c750717c154ff23e321a"
+  version "26524"
+  sha256 "afa1d1d41edd0891091676d1bda3ed5784b0f6d734d377945683a27b70d8c78d"
 
   url "https://github.com/kolmafia/kolmafia/releases/download/r#{version}/Kolmafia-22.07.#{version}.dmg",
       verified: "github.com/kolmafia/kolmafia"
