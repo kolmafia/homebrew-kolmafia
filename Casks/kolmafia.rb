@@ -1,25 +1,23 @@
 cask "kolmafia" do
-    version "26523"
+  version "26523"
+  sha256 "c9b99beffb67153647b454bc5acdd41994ae2095bea9c750717c154ff23e321a"
 
-    url "https://github.com/kolmafia/kolmafia/releases/download/r#{version}/Kolmafia-22.07.#{version}.dmg",
-        verified: "github.com/kolmafia/kolmafia"
+  url "https://github.com/kolmafia/kolmafia/releases/download/r#{version}/Kolmafia-22.07.#{version}.dmg",
+      verified: "github.com/kolmafia/kolmafia"
+  name "KoLmafia"
+  desc "Cross-platform application to interface with online RPG Kingdom of Loathing 🍸"
+  homepage "https://kolmafia.us/"
 
-    sha256 "c9b99beffb67153647b454bc5acdd41994ae2095bea9c750717c154ff23e321a"
+  livecheck do
+    url :url
+    strategy :github_latest
+  end
 
-    name "KoLmafia"
-    desc "KoLmafia is a cross-platform desktop tool which interfaces with the online adventure game Kingdom of Loathing 🍸"
-    homepage "https://kolmafia.us"
+  app "KoLmafia.app"
 
-    livecheck do
-        url :url
-        strategy :github_latest
-    end
+  zap trash: "~/Library/Application Support/KoLmafia"
 
-    app "KoLmafia.app"
-
-    zap trash: "~/Library/Application Support/KoLmafia"
-
-    caveats do
-        depends_on_java "17+"
-    end
+  caveats do
+    depends_on_java "17+"
+  end
 end
