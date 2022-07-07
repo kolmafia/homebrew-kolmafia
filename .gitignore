@@ -1,3 +1,4 @@
-Casks/*.backup
-
 .vscode
+
+version
+Casks/*.backup

@@ -7,3 +7,5 @@ URL=$(echo $RELEASE_INFO | jq -r '.assets | map(select(.name | endswith("dmg")))
 SHA=($(curl -sL ${URL} | shasum -a 256))
 
 sed -i'.backup' -e "s;version \"[0-9]*\";version \"${VERSION}\";" -e "s;sha256 \"[a-f0-9]*\";sha256 \"${SHA}\";" -e "s;url \".*dmg\";url \"${URL}\";" Casks/kolmafia.rb
+
+echo $VERSION > version

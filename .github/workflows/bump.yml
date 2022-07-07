@@ -20,8 +20,11 @@ jobs:
 
       - name: Commit
         run: |
+          VERSION=$(cat .version)
           git config user.name "KoLmafia Bot"
           git config user.email "<>"
           git add Casks/kolmafia.rb
-          git commit -m "Bump to new release"
+          git commit -m "Bump to r${VERSION}"
+          git tag $VERSION
           git push origin main
+          git push --tags
