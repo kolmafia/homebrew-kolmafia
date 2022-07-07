@@ -20,7 +20,7 @@ jobs:
 
       - name: Commit
         run: |
-          VERSION=$(cat .version)
+          VERSION=$(cat version)
           git config user.name "KoLmafia Bot"
           git config user.email "<>"
           git add Casks/kolmafia.rb
