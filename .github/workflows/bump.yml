@@ -1,0 +1,27 @@
+name: Bump
+
+on:
+  repository_dispatch:
+    types: [new-release]
+  workflow_dispatch:
+
+jobs:
+  bump:
+    name: Bump
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Bump to latest release
+        run: ./bump.sh
+
+      - name: Commit
+        run: |
+          git config user.name "KoLmafia Bot"
+          git config user.email "<>"
+          git add Casks/kolmafia.rb
+          git commit -m "Bump to new release"
+          git push origin main
