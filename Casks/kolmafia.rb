@@ -1,6 +1,6 @@
 cask "kolmafia" do
   version "null"
-  sha256 "be073c3fbb16db6e4b5c8f02ca1bc69984ec383baed9cfcdcec216a8f5b19cb0"
+  sha256 "718d29cf53ceea239fc2aba8c519036ba40aa68261c6b3ffa9564ec366987165"
 
   url "",
       verified: "github.com/kolmafia/kolmafia"
