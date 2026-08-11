@@ -5,18 +5,24 @@ on:
     types: [new-release]
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   bump:
     name: Bump
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
       - name: Bump to latest release
-        run: ./bump.sh
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          RELEASE_VERSION: ${{ github.event.client_payload.version }}
+        run: ./bump.sh "${RELEASE_VERSION:-}"
 
       - name: Commit
         run: |
@@ -24,7 +30,16 @@ jobs:
           git config user.name "KoLmafia Bot"
           git config user.email "<>"
           git add Casks/kolmafia.rb
-          git commit -m "Bump to r${VERSION}"
-          git tag $VERSION
+          if git diff --cached --quiet; then
+            if git rev-parse --verify --quiet "refs/tags/${VERSION}"; then
+              echo "Already at r${VERSION}"
+              exit 0
+            fi
+          else
+            git commit -m "Bump to r${VERSION}"
+          fi
+          if ! git rev-parse --verify --quiet "refs/tags/${VERSION}"; then
+            git tag "$VERSION"
+          fi
           git push origin main
           git push --tags
