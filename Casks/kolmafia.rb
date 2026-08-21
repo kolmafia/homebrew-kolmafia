@@ -1,8 +1,8 @@
 cask "kolmafia" do
-  version "29177"
-  sha256 "3843d16fe571ab002e163ae4450ad425e2b0ce5981f9d966abc4aff880542a9a"
+  version "29178"
+  sha256 "24b7fc160f1985d2580f6beff2a21dc0beaab832f4bdd9977d4e1aee60895b99"
 
-  url "https://github.com/kolmafia/kolmafia/releases/download/r29177/KoLmafia-26.08.29177.dmg",
+  url "https://github.com/kolmafia/kolmafia/releases/download/r29178/KoLmafia-26.08.29178.dmg",
       verified: "github.com/kolmafia/kolmafia"
   name "KoLmafia"
   desc "Cross-platform application to interface with online RPG Kingdom of Loathing 🍸"
